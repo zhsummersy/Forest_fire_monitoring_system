@@ -1,5 +1,10 @@
 # ESP32 智能环境监测系统
 
+<img width="2878" height="1372" alt="weather" src="https://github.com/user-attachments/assets/e54d7f16-588c-4d8a-b0a9-6cfeb7db0f43" />
+<img width="2878" height="1378" alt="info" src="https://github.com/user-attachments/assets/f3a9892b-5aa7-410a-92ac-61135c251a7c" />
+<img width="2878" height="1376" alt="index" src="https://github.com/user-attachments/assets/fcd74118-175e-4ce4-8f90-508045d6691d" />
+<img width="2878" height="1378" alt="data" src="https://github.com/user-attachments/assets/edfe019f-b6fe-43b7-b639-d725ef345ca4" />
+
 ## 📖 项目概述
 
 这是一个基于 ESP32 微控制器的智能环境监测系统，配合 Django Web 服务器实现远程数据监控和报警功能。系统能够实时监测多种环境参数，并在异常情况下通过蜂鸣器和网络通知进行报警。
