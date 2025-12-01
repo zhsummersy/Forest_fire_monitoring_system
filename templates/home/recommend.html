@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %} Search Results {% endblock title %}
+{% block recommendactive %}active{% endblock recommendactive %}
+
+{% block body %}
+<br>
+<div class="container">
+  <h2>请您回答以下问题,系统将对您的回答推荐适合的运算模型</h2>
+  <br>
+  <p>以下有三个选择，选择一个与您实际情况合适的回答。</p>
+  <div id="div1" class="form-check">
+    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>
+    <label class="form-check-label" for="radio1">
+      对单一化学物的风险进行评估，作为初步筛选过程，结果为点值。
+    </label>
+  </div>
+  <div id="div2" class="form-check">
+    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2" checked>
+    <label class="form-check-label" for="radio1">
+      对单一化学物的风险进行评估，作为精确评估过程，结果为摄入量分布。
+    </label>
+  </div>
+  <div id="div3" class="form-check">
+    <input type="radio" class="form-check-input" id="radio3" name="optradio" value="option3" checked>
+    <label class="form-check-label" for="radio1">
+      对多农药残留进行风险评估，可结合生理毒代物动力学模型进行分析。
+    </label>
+  </div>
+  <button type="submit" id="btn" class="btn btn-primary mt-3">提交</button>
+  <div id="info" style="display: none;">系统分析中...</div>
+  <div id="answer" style="display: none;"></div>
+</div>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+  $(document).ready(function () {
+    $("#btn").click(function () {
+      $("#div1").fadeOut();
+      $("#div2").fadeOut();
+      $("#div3").fadeOut();
+      $("#btn").fadeOut();
+      $('#info').fadeIn(1000).fadeOut(1000);
+      setTimeout(choose, 1000);
+    });
+    function choose() {
+      var res = $('input:radio:checked').val();
+      if (res == 'option1') {
+        $('#answer').fadeIn(1000).text('推荐您选择确定性模型');
+      }
+      else if (res == 'option2') {
+        $('#answer').fadeIn(1000).text('推荐您选择概率性模型');
+      }
+      else {
+        $('#answer').fadeIn(1000).text('推荐您选择累计性模型');
+      }
+    }
+  });
+</script>
+{% endblock body %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Logout{% endblock title %}
+{% block logoutactive %}active{% endblock logoutactive %}
+
+{% block body%}
+
+<div class="container">
+<h2>您已退出登陆 </h2>
+<div class="content-section">
+    <div class="border-top pt-3">
+        <small class="text-muted">
+             <a class="ml-2" href="{% url 'login' %}">登陆</a>
+        </small>
+    </div>
+</div>
+
+{% endblock body%}

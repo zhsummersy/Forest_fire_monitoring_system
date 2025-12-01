@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} 天气 {% endblock title %}
+{% block weatheractive %}active{% endblock weatheractive %}
+{% block body %}
+<div class="container">
+    <h2>天气数据</h2>
+    <div class="table-responsive-lg">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">今日日期</th>
+                    <th scope="col">更新时间</th>
+                    <th scope="col">当前城市</th>
+                    <th scope="col">当前温度</th>
+                    <th scope="col">当前天气</th>
+                    <th scope="col">风向风速</th>
+                    <th scope="col">相对湿度</th>
+                    <th scope="col">空气指数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{data.今日日期}}</td>
+                    <td>{{data.更新时间}}:00</td>
+                    <td>{{data.当前城市}}</td>
+                    <td>{{data.当前温度}}</td>
+                    <td>{{data.当前天气}}</td>
+                    <td>{{data.风向风速}}</td>
+                    <td>{{data.相对湿度}}</td>
+                    <td>{{data.空气指数}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+{% endblock body %}

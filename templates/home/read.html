@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %} Search Results {% endblock title %}
+{% block readactive %}active{% endblock readactive %}
+{% block body %}
+<main class="main pt-4">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+
+                <article class="card mb-4">
+                    <header class="card-header text-center">
+                        <h1 class="card-title">上传您的excel数据</h1>
+                    </header>
+                    <div class="card-body">
+                        <a href="/media/homeimages/污染数据模版.xlsx">点击污染数据模版</a>
+                        <br><br>
+                        <form action="/blog/read" method="post" enctype="multipart/form-data" onsubmit="return check_file()">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {% if info is not null %}
+                                <div class="alert alert-success">
+                                    <strong>数据上传成功!</strong>
+                                </div>
+                                {% endif %}
+                                <label for="name">文件</label>
+                                <input type="file" class="form-control" id="file" name="file">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+
+                    </div>
+                </article><!-- /.card -->
+
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    function check_file(){
+        var up = document.getElementById('file');
+        console.log(up);
+        if (up.value ==''){
+            alert('请选择文件');
+            return false;
+        }
+    }
+</script>
+{% endblock body %}

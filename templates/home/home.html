@@ -1,0 +1,95 @@
+<link href="https://fonts.googleapis.com/css?family=Long+Cang&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
+
+
+{% extends 'base.html' %}
+
+
+
+
+{% block title %} 首页 {% endblock title %}
+{% block homeactive %}active{% endblock homeactive %}
+{% block body %}
+
+
+
+
+<div class="container ">
+  <div class="jumbotron">
+    <h1 class="display-4 text-center">森林环境检测管理系统</h1>
+    <!-- <p class="leadTha"> Thank You for taking your time to help complete the Beta Test for this Website. All the Beta
+      Testers would be rewarded via email soon.</p> -->
+    <hr class="my-4">
+    <!-- <li>Visit the Blog Page. Have a look at it, open some blogs.</li>
+    <li>Click on the Register option in the navbar and register. Complete the process and Login to the website.</li>
+    <li>Create Blog from the new option.</li>
+    <li>Set a profile photo for your account.</li>
+    <li>Logout from the Blog and again go to Login option. Click on Reset password and complete the process.</li>
+    <li>After reseting the Password, fill the contact form and tell your views.Best views would be displayed.</li>
+    <li>Thank You for your time</li> -->
+    <!-- <hr> -->
+    <div class="text-center">
+      <a class="btn btn-primary btn-lg " href="/blog" role="button">进入知识中心</a>
+    </div>
+
+  </div>
+</div>
+<div class="container">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-columns">
+          {%for i in images%}
+          <div class="card text-center">
+            <a href="/media/{{i.image}}"><img src="/media/{{i.image}}" class="card-img-top" alt="..."></a>
+            <div class="card-body">
+              <h5 class="card-title">{{i.title}}</h5>
+              <p class="card-text">{{i.description}}</p>
+              <!-- <a href="/media/{{i.image}}" class="btn btn-outline-primary" download>View</a> -->
+              <a href="/media/{{i.image}}" class="btn btn-outline-primary" download>下载</a>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="image-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true" width=600px>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">PskClicks</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" width=600px>
+        <img src="#!" id="image-show" class="" alt="" width=450px>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
+{% endblock body %}
+
+</html>

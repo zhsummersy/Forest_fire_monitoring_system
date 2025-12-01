@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} 警报 {% endblock title %}
+{% block alarmactive %}active{% endblock alarmactive %}
+{% block body %}
+<div class="container">
+    <h2>警报数据</h2>
+    <div class="table-responsive-lg">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">检测单位</th>
+                    <th scope="col">警报时间</th>
+                    <th scope="col">警报主体</th>
+                    <th scope="col">警报值</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <th scope="row">ESP32</th>
+                    <td>{{i.timeStamp}}</td>
+                    <td>{{i.alarm}}</td>
+                    <td>{{i.value}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+{% endblock body %}

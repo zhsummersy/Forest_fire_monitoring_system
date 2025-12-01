@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block title %} 数据 {% endblock title %}
+{% block polluteactive %}active{% endblock polluteactive %}
+{% block body %}
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        {{predict}}
+      </div>
+    <h2>数据表</h2>
+    <div class="table-responsive-lg">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">检测单位</th>
+                    <th scope="col">环境温度</th>
+                    <th scope="col">易燃浓度</th>
+                    <th scope="col">空气湿度</th>
+                    <th scope="col">土壤湿度</th>
+                    <th scope="col">是否有人</th>
+                    <th scope="col">光照强度</th>
+                    <th scope="col">是否有火</th>
+                    <th scope="col">上传时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <th scope="row">ESP32</th>
+                    <td>{{i.Temperature}}℃</td>
+                    <td>{{i.Humidity}}%</td>
+                    <td>{{i.MQ}}%</td>
+                    <td>{{i.WaterRate}}%</td>
+                    <td>{{i.detected}}</td>
+                    <td>{{i.Illumination}}%</td>
+                    <td>{{i.fire}}</td>
+                    <td>{{i.timeStamp}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <h2>森林温度折线图</h2>
+    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+    <h2>空气湿度折线图</h2>
+    <canvas class="my-4 w-100" id="myChart1" width="900" height="380"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script>
+    /* globals Chart:false, feather:false */
+
+    (function () {
+        'use strict'
+
+        feather.replace()
+
+        // Graphs
+        var ctx = document.getElementById('myChart')
+        // eslint-disable-next-line no-unused-vars
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [
+                    {% for i in chart %}
+                        {{i.id}},
+                        {% endfor %}
+                ],
+                datasets: [{
+                    data: [
+                        {% for i in chart %}
+                        {{i.Temperature}},
+                        {% endfor %}
+                    ],
+                    lineTension: 0,
+                    backgroundColor: 'transparent',
+                    borderColor: '#007bff',
+                    borderWidth: 4,
+                    pointBackgroundColor: '#007bff'
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                }
+            }
+        })
+    })()
+</script>
+<script>
+    /* globals Chart:false, feather:false */
+
+    (function () {
+        'use strict'
+
+        feather.replace()
+
+        // Graphs
+        var ctx = document.getElementById('myChart1')
+        // eslint-disable-next-line no-unused-vars
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [
+                    {% for i in chart %}
+                        {{i.id}},
+                        {% endfor %}
+                ],
+                datasets: [{
+                    data: [
+                        {% for i in chart %}
+                        {{i.Humidity}},
+                        {% endfor %}
+                    ],
+                    lineTension: 0,
+                    backgroundColor: 'transparent',
+                    borderColor: '#007bff',
+                    borderWidth: 4,
+                    pointBackgroundColor: '#007bff'
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                }
+            }
+        })
+    })()
+</script>
+{% endblock body %}
