@@ -158,7 +158,7 @@ def do_connect():
     wlan.active(True)
     if not wlan.isconnected():
         print('connecting to network...')
-        wlan.connect('Kee', '17368601723')
+        wlan.connect('ssid', 'password')
         i = 1
         while not wlan.isconnected():
             print("正在链接...{}".format(i))
